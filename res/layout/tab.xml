@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2009 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+
+
+     This layout provides the structure for a browser tab. A tab contains the
+     WebView and any number of other UI elements specific to that tab.
+     Currently, the only such element is the Geolocation permissions prompt.
+-->
+
+<com.android.browser.DraggableFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/draggable_mainframe"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView android:id="@+id/navview_opacity"
+        android:layout_gravity="top"
+        android:scaleType="fitStart"
+        android:background="@color/navview_opacity_background_color"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ImageView android:id="@+id/stationary_navview"
+        android:layout_gravity="top"
+        android:scaleType="fitStart"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Wrapper layout for the WebView, which must be in a FrameLayout. -->
+    <FrameLayout android:id="@+id/webview_wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+
+    <ImageView android:id="@+id/sliding_navview"
+        android:layout_gravity="top"
+        android:scaleType="fitStart"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ImageView android:id="@+id/sliding_navview_shadow"
+        android:background="@drawable/left_shade"
+        android:layout_gravity="top"
+        android:scaleType="fitStart"
+        android:visibility="gone"
+        android:layout_width="10dp"
+        android:layout_height="match_parent" />
+
+    <!-- Edge setup screen -->
+
+    <LinearLayout android:id="@+id/edge_sliding_settings"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:visibility="gone"
+        android:background="@color/mynav_primary"
+        android:layout_gravity="top"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="32dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:adjustViewBounds="true"
+            android:src="@drawable/edge_header"/>
+
+        <FrameLayout android:id="@+id/edge_title_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="16dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="32sp"
+                android:textColor="@color/white"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:layout_gravity="top"
+                android:text="@string/pref_edge_swipe_title"/>
+        </FrameLayout>
+        <LinearLayout android:id="@+id/edge_content_layout"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="top">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:text="@string/pref_edge_swipe_setup_desc"/>
+            <RadioGroup
+                android:id="@+id/edge_sliding_settings_options"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="16dp"
+                android:paddingBottom="24dp">
+                <RadioButton
+                    android:id="@+id/edge_sliding_settings_options_temporal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pref_edge_enable"
+                    android:textColor="@color/white"
+                    android:paddingEnd="48dp"
+                    android:textSize="18sp"/>
+                <RadioButton
+                    android:id="@+id/edge_sliding_settings_options_spatial"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pref_edge_enable"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:visibility="gone"/>
+                <RadioButton
+                    android:id="@+id/edge_sliding_settings_options_disabled"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pref_edge_disable"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"/>
+            </RadioGroup>
+            <Button
+                android:id="@+id/edge_sliding_settings_close_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingEnd="16dp"
+                android:text="@string/pref_edge_swipe_option_close"
+                android:textColor="@color/mynav_accent"
+                android:textSize="16dp"
+                android:layout_alignParentEnd="true"
+                android:gravity="end"
+                style="@android:style/Widget.Material.Button.Borderless"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</com.android.browser.DraggableFrameLayout>
